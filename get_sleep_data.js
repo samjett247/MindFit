@@ -307,30 +307,27 @@ function get_user_data() {
   ]
 };
 
-var new_response = [response, response, response, response]
+// Create a new response to consider a larger initial dataset
+	var new_response = [response, response, response, response]
+
 
 
 	// response = call_api(userId, token); //FOR PRODUCTION
-	console.log(JSON.stringify(new_response))
+	console.log(JSON.stringify(data))
+
 
 	// return response
 }
-// function load_data() {
-// 	$.ajax({
-//         url: "load.php",
-//         data: "", // no data, we are just loading
-//         dataType: 'json',
-//         type: 'POST',
-//         success: function (state) {
-//             response = state; // okay, state loaded and assigned to our Game.state!
-//         }
-//     }
-//     return response
-// };
 
-// function parse_data(api_response) {
-// 	return api_response
 
-// }
+function parse_data(data) {
+	
+	for (i = 0; i < pieces.length; i++) {
+		data[i]
+	}
 
-// get_user_data(userId, token, clientId);
+	return api_response
+
+}
+
+
