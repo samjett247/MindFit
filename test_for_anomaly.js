@@ -1,5 +1,15 @@
 // This script contains the js to test whether a given data point is an anomaly
 
+function Read_Data(){
+	//Read in the example_data.json
+	var JSONItems = [];
+	$.getJSON("/example_data.json", function( data){
+	JSONItems = data;
+	console.log(JSONItems);
+});
+}
+
+
 function Smooth(vec, m) {
 
 	return vec //Reduced length
