@@ -1,4 +1,4 @@
-// This is a chart component 
+// This is a chart component
 
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts';
 import React from 'react';
@@ -35,10 +35,12 @@ class Example_Chart extends React.Component {
 	}
 
 	render () {
+    return(
 		<div>
 		<h1> An Example Chart </h1>
 		<TimeSeriesChart data={data}/>
 		</div>
+  )
 	}
 }
 
