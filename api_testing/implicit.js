@@ -1,6 +1,6 @@
 // Settings for the script, you MUST fill these out for the example to work
 var settings = {
-	client_id: "22DJS4",
+	client_id: "22DJRK", // 22DJS4
 	// callback_url: "YOUR_CALLBACK_URL_HERE"
 };
 
@@ -17,7 +17,7 @@ Prism.languages.json = {
 
 Prism.languages.jsonp = Prism.languages.json;
 
-var token= "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyMkRKUzQiLCJzdWIiOiI3QlJUUE4iLCJpc3MiOiJGaXRiaXQiLCJ0eXAiOiJhY2Nlc3NfdG9rZW4iLCJzY29wZXMiOiJyc29jIHJhY3QgcnNldCBybG9jIHJ3ZWkgcmhyIHJudXQgcnBybyByc2xlIiwiZXhwIjoxNTUwOTQwNDMzLCJpYXQiOjE1NTAzNTc0OTh9.3LrFpkcWNeMq0KdhKf9WPyp6nQqCQ0wUka65uJNzomY";
+var token;
 var hash;
 var userId;
 
@@ -53,10 +53,11 @@ function parseParms(str) {
 	return data;
 }
 
-// Returns  URL hash
+// Returns the token from the URL hash
 function getToken() {
 	//substring(1) to remove the '#'
 	hash = parseParms(document.location.hash.substring(1));
+
 	// Return hash for parsing later
 	return hash
 }
@@ -68,7 +69,6 @@ function authorize() {
 
 // Make a call using our token to the Fitbit API
 function testCall() {
-	var token = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyMkRKUzQiLCJzdWIiOiI3QlJUUE4iLCJpc3MiOiJGaXRiaXQiLCJ0eXAiOiJhY2Nlc3NfdG9rZW4iLCJzY29wZXMiOiJyc29jIHJhY3QgcnNldCBybG9jIHJ3ZWkgcmhyIHJudXQgcnBybyByc2xlIiwiZXhwIjoxNTUwOTQwNDMzLCJpYXQiOjE1NTAzNTc0OTh9.3LrFpkcWNeMq0KdhKf9WPyp6nQqCQ0wUka65uJNzomY"
 	$.ajax({
 		url:  "https://api.fitbit.com/1.2/user/-/sleep/list.json?beforeDate=2019-02-18&sort=desc&offset=0&limit=1",// 'https://api.fitbit.com/1/user/'+ userId+ '/sleep/date/2019-02-16.json',
 		method: "GET",
