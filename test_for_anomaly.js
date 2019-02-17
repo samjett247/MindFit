@@ -1,36 +1,38 @@
 // This script contains the js to test whether a given data point is an anomaly
+// Define some global variables
+const m = 3
+const n=3 //This is the number of features
+const epsilon = 0.01 // This is the confidence probability value to compare against
 
-function Read_Data(){
-	//Read in the example_data.json
-	var JSONItems = [];
-	$.getJSON("/example_data.json", function( data){
-	JSONItems = data;
-	console.log(JSONItems);
-});
+var JSONItems = [];
+function ComputeProbabilities(data){
+	console.log(data)
 }
 
-
 function Smooth(vec, m) {
+	var vec = []
 
 	return vec //Reduced length
 }
 
 function Mean(vec) {
-
+	var mu=[]
 	return mu// nx1 dimensional vector
 }
 
 function Covariance(vec, m) {
-
+	var sigma=[]
 	return sigma // nxn dimensional matrix
 }
 
 function Probability(vec, mu, sigma) {
-
+	var p_vec = []
 	return p_vec // 1xp vector
 }
 
 function AnomalyTest(p_vec, sigma) {
-
+	bool_vec=[]
 	return bool_vec // 1xp vector
 }
+
+// export default ComputeProbabilities;

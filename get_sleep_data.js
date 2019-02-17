@@ -1,5 +1,5 @@
 // This function will get the previous sleep data for a fitbit user given current day and userId and access token
-
+// import ComputeProbabilities from './test_for_anomaly.js';
 
 // Parses the URL parameters and returns an object
 function parseParms(str) {
@@ -60,7 +60,6 @@ function get_user_data() {
 	var clientId = "22DJS4"
 
 	// authorize(clientId);
-	setTimeout(5);
 	//FOR DEVELOPMENT
 	var response = {
   "pagination": {
@@ -324,6 +323,9 @@ function get_user_data() {
 
 	//Save some example data
 	// download(JSON.stringify(parsed_data), 'example_data.json', 'text/plain');
+
+	// Check to see if the most recent data point is an anomaly
+	ComputeProbabilities(parsed_data)
 	return parsed_data
 }
 
