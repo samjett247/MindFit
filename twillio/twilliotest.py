@@ -10,5 +10,7 @@ message = client.messages.create(
     to="+19727624288", 
     from_="+19729925293",
     body="Your patient has requested your care! Please reach out to them as soon as you can.")
-
-print(message.sid)
+def sendMessage():
+    print(message.sid)
+if __name__ == "__main__":
+    sendMessage()
