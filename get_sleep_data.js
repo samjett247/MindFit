@@ -1,5 +1,6 @@
 // This function will get the previous sleep data for a fitbit user given current day and userId and access token
 
+
 // Parses the URL parameters and returns an object
 function parseParms(str) {
 	var pieces = str.split("&"), data = {}, i, parts;
@@ -308,26 +309,54 @@ function get_user_data() {
 };
 
 // Create a new response to consider a larger initial dataset
-	var new_response = [response, response, response, response]
+	var new_response = JSON.parse(JSON.stringify(response));
 
-
-
+	console.log(response['sleep'])
+	dates = ['2019-02-16', '2019-02-15', '2019-02-14', '2019-02-13', '2019-02-12', '2019-02-11', '2019-02-10']
+	for (k = 0; k<120; k++){
+		res = response['sleep'][0]
+		if (k<7) {res['dateOfSleep'] = dates[k]}
+		new_response['sleep'].push(JSON.parse(JSON.stringify(res)))
+	}
 	// response = call_api(userId, token); //FOR PRODUCTION
-	console.log(JSON.stringify(data))
+	var parsed_data = parse_data(new_response)
+	console.log(parsed_data)
 
+	//Save some example data
+	download(JSON.stringify(parsed_data), 'example_data.json', 'text/plain');
 
-	// return response
 }
 
-
-function parse_data(data) {
+function parse_data(full_data) {
 	
-	for (i = 0; i < pieces.length; i++) {
-		data[i]
+	// This function will parse the json from the fitbit response
+	var return_data = []
+	data = full_data['sleep']
+
+	for (i = 0; i < data.length; i++) {
+		//Add the date into this entry
+		return_data[i] = {}
+		return_data[i]['date']= data[i]['dateOfSleep']
+
+		//define the summary dataset, and fill in the counts for each sleep type 
+		labels = ['deep', 'light', 'rem']
+		return_data[i]['sleepData'] = {}
+
+		for (j=0;j<labels.length; j++) {
+			return_data[i]['sleepData'][labels[j]] = data[i]['levels']['summary'][labels[j]]['minutes'] + 120*(0.5-Math.random()) //Change this if you dont want random data
+		}
+	// console.log(return_data)
 	}
 
-	return api_response
+	return return_data
 
 }
 
+function download(content, fileName, contentType) {
+    var a = document.createElement("a");
+    var file = new Blob([content], {type: contentType});
+    a.href = URL.createObjectURL(file);
+    a.download = fileName;
+    a.click();
+}
 
