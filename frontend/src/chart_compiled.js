@@ -1,32 +1,30 @@
 // This is a chart component
 
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts';
+import { AreaChart, Area, Label,XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts';
 import React from 'react';
+import get_user_data from './compute_chart_data.js'
 
-const data = [
-      {name: 'date', Deep: 2000, Light: 2400, rem: 2400},
-      {name: 'Spring 2019', Deep: 3000, Light: 1398, rem: 2210},
-      {name: 'Summer 2019', Deep: 2000, Light: 9800, rem: 2290},
-      {name: 'Fall 2019', Deep: 2780, Light: 3908, rem: 2000},
-      {name: 'Spring 2020', Deep: 1890, Light: 4800, rem: 2181},
-      {name: 'Summer 2020', Deep: 2390, Light: 3800, rem: 2500},
-      {name: 'Fall 2020', Deep: 3490, Light: 4300, rem: 2100},
-];
+var orig_data = get_user_data();
+const data = orig_data.slice(1,8)
+
+console.log(data)
+
 
 const TimeSeriesChart = props => (
   <div>
-    <LineChart width={800} height={400} data={props.data}
+    <AreaChart width={800} height={400} data={props.data}
     margin={{top: 5, right: 30, left: 20, bottom: 5}}>
-        <XAxis dataKey="name" padding={{left: 30, right: 30}}/>
-        <YAxis/>
+        <XAxis dataKey="Date" padding={{left: 30, right: 30}}>
+        </XAxis>
+        <YAxis value="Date" label={{ value: 'Minutes of Sleep', angle: -90, position: 'insideLeft' }} />
         <CartesianGrid strokeDasharray="3 3"/>
         <Tooltip/>
-        <Legend />
-        <Line type="monotone" dataKey="Deep" stroke="#8884d8" strokeWidth={3} activeDot={{r: 6}}/>
-        <Line type="monotone" dataKey="Light" stroke="#8884d8" strokeWidth={3} activeDot={{r: 6}}/>
-        <Line type="monotone" dataKey="rem" stroke="#8884d8" strokeWidth={3} activeDot={{r: 6}}/>
-
-  </LineChart>
+        <Legend position="insideTopRight"/>
+        <Area type="monotone" dataKey="Light Sleep" stroke="#82ca9d" fill='#82ca9d'/>
+        <Area  type="monotone" dataKey="REM Sleep" stroke="#868788" fill='#868788'/>
+        <Area type="monotone" dataKey="Deep Sleep" stroke="#8884d8" fill="#8884d8" strokeWidth={3} activeDot={{r: 6}}/>
+        
+    </AreaChart>
   </div>
 );
 
@@ -44,5 +42,6 @@ class Example_Chart extends React.Component {
   )
 	}
 }
+
 
 export default Example_Chart;

@@ -37,17 +37,18 @@ function call_api(userId, token) {
 	$.ajax({
 		url:  "https://api.fitbit.com/1.2/user/" + userId + "/sleep/list.json?beforeDate=2019-02-18&sort=desc&offset=0&limit=1",// 'https://api.fitbit.com/1/user/'+ userId+ '/sleep/date/2019-02-16.json',
 		method: "GET",
+		async: false,
 		headers: {
 			"Authorization" : "Bearer " + token
 		},
 		success: function(response) {
-			$("#response-code").html(JSON.stringify(response, null, 2));
+			// $("#response-code").html(JSON.stringify(response, null, 2));
 			// Prism.highlightAll();
-		var api_response = JSON.stringify(response, null, 2);
-		console.log(api_response)
+		api_response = JSON.stringify(response, null, 2);
 		}
 	});
 	return api_response
+	
 	}
 
 
@@ -60,252 +61,9 @@ function get_user_data() {
 	var clientId = "22DJS4"
 
 	// authorize(clientId);
-	//FOR DEVELOPMENT
-	var response = {
-  "pagination": {
-    "beforeDate": "2019-02-18",
-    "limit": 1,
-    "next": "",
-    "offset": 0,
-    "previous": "",
-    "sort": "desc"
-  },
-  "sleep": [
-    {
-      "dateOfSleep": "2019-02-16",
-      "duration": 20460000,
-      "efficiency": 92,
-      "endTime": "2019-02-16T08:04:30.000",
-      "infoCode": 0,
-      "levels": {
-        "data": [
-          {
-            "dateTime": "2019-02-16T02:23:00.000",
-            "level": "wake",
-            "seconds": 30
-          },
-          {
-            "dateTime": "2019-02-16T02:23:30.000",
-            "level": "light",
-            "seconds": 330
-          },
-          {
-            "dateTime": "2019-02-16T02:29:00.000",
-            "level": "deep",
-            "seconds": 2460
-          },
-          {
-            "dateTime": "2019-02-16T03:10:00.000",
-            "level": "light",
-            "seconds": 1290
-          },
-          {
-            "dateTime": "2019-02-16T03:31:30.000",
-            "level": "rem",
-            "seconds": 1110
-          },
-          {
-            "dateTime": "2019-02-16T03:50:00.000",
-            "level": "light",
-            "seconds": 870
-          },
-          {
-            "dateTime": "2019-02-16T04:04:30.000",
-            "level": "deep",
-            "seconds": 1110
-          },
-          {
-            "dateTime": "2019-02-16T04:23:00.000",
-            "level": "light",
-            "seconds": 1380
-          },
-          {
-            "dateTime": "2019-02-16T04:46:00.000",
-            "level": "deep",
-            "seconds": 420
-          },
-          {
-            "dateTime": "2019-02-16T04:53:00.000",
-            "level": "light",
-            "seconds": 120
-          },
-          {
-            "dateTime": "2019-02-16T04:55:00.000",
-            "level": "rem",
-            "seconds": 930
-          },
-          {
-            "dateTime": "2019-02-16T05:10:30.000",
-            "level": "light",
-            "seconds": 960
-          },
-          {
-            "dateTime": "2019-02-16T05:26:30.000",
-            "level": "wake",
-            "seconds": 210
-          },
-          {
-            "dateTime": "2019-02-16T05:30:00.000",
-            "level": "light",
-            "seconds": 2490
-          },
-          {
-            "dateTime": "2019-02-16T06:11:30.000",
-            "level": "rem",
-            "seconds": 1740
-          },
-          {
-            "dateTime": "2019-02-16T06:40:30.000",
-            "level": "light",
-            "seconds": 270
-          },
-          {
-            "dateTime": "2019-02-16T06:45:00.000",
-            "level": "rem",
-            "seconds": 1260
-          },
-          {
-            "dateTime": "2019-02-16T07:06:00.000",
-            "level": "light",
-            "seconds": 270
-          },
-          {
-            "dateTime": "2019-02-16T07:10:30.000",
-            "level": "wake",
-            "seconds": 330
-          },
-          {
-            "dateTime": "2019-02-16T07:16:00.000",
-            "level": "light",
-            "seconds": 2910
-          }
-        ],
-        "shortData": [
-          {
-            "dateTime": "2019-02-16T02:23:00.000",
-            "level": "wake",
-            "seconds": 150
-          },
-          {
-            "dateTime": "2019-02-16T03:13:30.000",
-            "level": "wake",
-            "seconds": 60
-          },
-          {
-            "dateTime": "2019-02-16T03:17:30.000",
-            "level": "wake",
-            "seconds": 90
-          },
-          {
-            "dateTime": "2019-02-16T03:22:30.000",
-            "level": "wake",
-            "seconds": 60
-          },
-          {
-            "dateTime": "2019-02-16T03:48:00.000",
-            "level": "wake",
-            "seconds": 120
-          },
-          {
-            "dateTime": "2019-02-16T04:23:00.000",
-            "level": "wake",
-            "seconds": 60
-          },
-          {
-            "dateTime": "2019-02-16T04:52:00.000",
-            "level": "wake",
-            "seconds": 60
-          },
-          {
-            "dateTime": "2019-02-16T05:08:00.000",
-            "level": "wake",
-            "seconds": 30
-          },
-          {
-            "dateTime": "2019-02-16T05:16:00.000",
-            "level": "wake",
-            "seconds": 30
-          },
-          {
-            "dateTime": "2019-02-16T05:32:30.000",
-            "level": "wake",
-            "seconds": 90
-          },
-          {
-            "dateTime": "2019-02-16T05:47:00.000",
-            "level": "wake",
-            "seconds": 30
-          },
-          {
-            "dateTime": "2019-02-16T05:51:30.000",
-            "level": "wake",
-            "seconds": 30
-          },
-          {
-            "dateTime": "2019-02-16T06:19:30.000",
-            "level": "wake",
-            "seconds": 30
-          },
-          {
-            "dateTime": "2019-02-16T06:31:00.000",
-            "level": "wake",
-            "seconds": 30
-          },
-          {
-            "dateTime": "2019-02-16T06:39:30.000",
-            "level": "wake",
-            "seconds": 60
-          },
-          {
-            "dateTime": "2019-02-16T07:00:30.000",
-            "level": "wake",
-            "seconds": 30
-          },
-          {
-            "dateTime": "2019-02-16T07:30:30.000",
-            "level": "wake",
-            "seconds": 30
-          },
-          {
-            "dateTime": "2019-02-16T07:49:30.000",
-            "level": "wake",
-            "seconds": 180
-          }
-        ],
-        "summary": {
-          "deep": {
-            "count": 3,
-            "minutes": 65,
-            "thirtyDayAvgMinutes": 0
-          },
-          "light": {
-            "count": 19,
-            "minutes": 169,
-            "thirtyDayAvgMinutes": 0
-          },
-          "rem": {
-            "count": 8,
-            "minutes": 79,
-            "thirtyDayAvgMinutes": 0
-          },
-          "wake": {
-            "count": 20,
-            "minutes": 28,
-            "thirtyDayAvgMinutes": 0
-          }
-        }
-      },
-      "logId": 21243743051,
-      "minutesAfterWakeup": 0,
-      "minutesAsleep": 313,
-      "minutesAwake": 28,
-      "minutesToFallAsleep": 0,
-      "startTime": "2019-02-16T02:23:00.000",
-      "timeInBed": 341,
-      "type": "stages"
-    }
-  ]
-};
+	//FOR Production
+	api_response = call_api(userId, token); //FOR PRODUCTION
+	var response = JSON.parse(api_response)
 
 // Create a new response to consider a larger initial dataset
 	var new_response = JSON.parse(JSON.stringify(response));
@@ -316,15 +74,15 @@ function get_user_data() {
 		if (k<7) {res['dateOfSleep'] = dates[k]}
 		new_response['sleep'].push(JSON.parse(JSON.stringify(res)))
 	}
-	// response = call_api(userId, token); //FOR PRODUCTION
 	var parsed_data = parse_data(new_response)
+	console.log(parsed_data)
 	// console.log(parsed_data)
 
 	//Save some example data
 	// download(JSON.stringify(parsed_data), 'example_data.json', 'text/plain');
 
 	// Check to see if the most recent data point is an anomaly
-	ComputeProbabilities(parsed_data)
+	// ComputeProbabilities(parsed_data)
 	return parsed_data
 }
 
@@ -341,10 +99,9 @@ function parse_data(full_data) {
 
 		//define the summary dataset, and fill in the counts for each sleep type 
 		labels = ['deep', 'light', 'rem']
-		return_data[i]['sleepData'] = {}
 
 		for (j=0;j<labels.length; j++) {
-			return_data[i]['sleepData'][labels[j]] = data[i]['levels']['summary'][labels[j]]['minutes'] + 120*(0.5-Math.random()) //Change this if you dont want random data
+			return_data[i][labels[j]] = data[i]['levels']['summary'][labels[j]]['minutes'] + 120*(0.5-Math.random()) //Change this if you dont want random data
 		}
 	// console.log(return_data)
 	}
