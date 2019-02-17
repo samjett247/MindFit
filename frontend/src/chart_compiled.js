@@ -4,13 +4,13 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 're
 import React from 'react';
 
 const data = [
-      {name: 'Feb 01', Sleep: 4000, Param2: 2400, Param3: 2400},
-      {name: 'Spring 2019', Sleep: 3000, Param2: 1398, Param3: 2210},
-      {name: 'Summer 2019', Sleep: 2000, Param2: 9800, Param3: 2290},
-      {name: 'Fall 2019', Sleep: 2780, Param2: 3908, Param3: 2000},
-      {name: 'Spring 2020', Sleep: 1890, Param2: 4800, Param3: 2181},
-      {name: 'Summer 2020', Sleep: 2390, Param2: 3800, Param3: 2500},
-      {name: 'Fall 2020', Sleep: 3490, Param2: 4300, Param3: 2100},
+      {name: 'date', Deep: 2000, Light: 2400, rem: 2400},
+      {name: 'Spring 2019', Deep: 3000, Light: 1398, rem: 2210},
+      {name: 'Summer 2019', Deep: 2000, Light: 9800, rem: 2290},
+      {name: 'Fall 2019', Deep: 2780, Light: 3908, rem: 2000},
+      {name: 'Spring 2020', Deep: 1890, Light: 4800, rem: 2181},
+      {name: 'Summer 2020', Deep: 2390, Light: 3800, rem: 2500},
+      {name: 'Fall 2020', Deep: 3490, Light: 4300, rem: 2100},
 ];
 
 const TimeSeriesChart = props => (
@@ -22,10 +22,11 @@ const TimeSeriesChart = props => (
         <CartesianGrid strokeDasharray="3 3"/>
         <Tooltip/>
         <Legend />
-        <Line type="monotone" dataKey="Sleep" stroke="#8884d8" strokeWidth={3} activeDot={{r: 6}}/>
-        <Line type="monotone" dataKey="Param2" stroke="#82ca9d" />
-        <Line type="monotone" dataKey="Param3" stroke="#868788" />
-    </LineChart>
+        <Line type="monotone" dataKey="Deep" stroke="#8884d8" strokeWidth={3} activeDot={{r: 6}}/>
+        <Line type="monotone" dataKey="Light" stroke="#8884d8" strokeWidth={3} activeDot={{r: 6}}/>
+        <Line type="monotone" dataKey="rem" stroke="#8884d8" strokeWidth={3} activeDot={{r: 6}}/>
+
+  </LineChart>
   </div>
 );
 
@@ -37,7 +38,7 @@ class Example_Chart extends React.Component {
 	render () {
     return(
 		<div>
-		<h1> An Example Chart </h1>
+		<h1 className="mx-auto text-center titletext">Summary Statistics </h1>
 		<TimeSeriesChart data={data}/>
 		</div>
   )
