@@ -323,8 +323,8 @@ function get_user_data() {
 	console.log(parsed_data)
 
 	//Save some example data
-	download(JSON.stringify(parsed_data), 'example_data.json', 'text/plain');
-
+	// download(JSON.stringify(parsed_data), 'example_data.json', 'text/plain');
+	return parsed_data
 }
 
 function parse_data(full_data) {
