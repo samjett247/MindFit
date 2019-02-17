@@ -310,7 +310,6 @@ function get_user_data() {
 // Create a new response to consider a larger initial dataset
 	var new_response = JSON.parse(JSON.stringify(response));
 
-	console.log(response['sleep'])
 	dates = ['2019-02-16', '2019-02-15', '2019-02-14', '2019-02-13', '2019-02-12', '2019-02-11', '2019-02-10']
 	for (k = 0; k<120; k++){
 		res = response['sleep'][0]
@@ -319,7 +318,7 @@ function get_user_data() {
 	}
 	// response = call_api(userId, token); //FOR PRODUCTION
 	var parsed_data = parse_data(new_response)
-	console.log(parsed_data)
+	// console.log(parsed_data)
 
 	//Save some example data
 	// download(JSON.stringify(parsed_data), 'example_data.json', 'text/plain');
